@@ -1,0 +1,397 @@
+openapi: 3.0.0
+info:
+  title: Schedules
+  description: An example REST API
+  contact:
+    name: a040737
+    email: a040737@umaia.pt
+  version: 0.0.1
+servers:
+- url: http://localhost:8080
+  description: My localhost
+  variables:
+    basePath:
+      default: /
+paths:
+  /schedules:
+    get:
+      tags:
+      - ScheduleController
+      summary: Retrieve schedules
+      operationId: retrieveSchedules
+      responses:
+        "200":
+          description: Array of Schedule model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schedule'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: array
+                xml:
+                  name: Schedules
+                items:
+                  $ref: '#/components/schemas/Schedule'
+      x-swagger-router-controller: ScheduleController
+    post:
+      tags:
+      - ScheduleController
+      summary: Create Schedule
+      operationId: createSchedule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+      responses:
+        "200":
+          description: Create a Schedule model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+      x-swagger-router-controller: ScheduleController
+  /schedules/{id}:
+    get:
+      tags:
+      - ScheduleController
+      summary: Retrieve schedule
+      operationId: retrieveSchedule
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve schedule id 1
+            value: 1
+          two:
+            summary: Retrieve schedule id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schedule'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: id not found
+      x-swagger-router-controller: ScheduleController
+    put:
+      tags:
+      - ScheduleController
+      summary: Update schedule
+      operationId: updateSchedule
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update schedule id 1
+            value: 1
+          two:
+            summary: Update schedule id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+            examples:
+              AeroportoExample01:
+                $ref: '#/components/examples/ScheduleExample01'
+              AeroportoExample02:
+                $ref: '#/components/examples/ScheduleExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Schedule PUT access
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: id not found
+      x-swagger-router-controller: ScheduleController
+    delete:
+      tags:
+      - ScheduleController
+      summary: Delete schedule
+      operationId: deletedSchedule
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Schedule id 1
+            value: 1
+          two:
+            summary: Delete Schedule id 2
+            value: 2
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: id not found
+      x-swagger-router-controller: ScheduleController
+  /lessons:
+    get:
+      tags:
+      - LessonController
+      summary: Retrieve lessons
+      operationId: retrieveLessons
+      responses:
+        "200":
+          description: Array of Lesson model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lesson'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: array
+                xml:
+                  name: Schedules
+                items:
+                  $ref: '#/components/schemas/Lesson'
+      x-swagger-router-controller: LessonController
+    post:
+      tags:
+      - LessonController
+      summary: Create Lesson
+      operationId: createLesson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Lesson'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Lesson'
+      responses:
+        "200":
+          description: Create a Lesson model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lesson'
+      x-swagger-router-controller: LessonController
+  /lessons/{id}:
+    get:
+      tags:
+      - LessonController
+      summary: Retrieve lesson
+      operationId: retrieveLesson
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Lesson id 1
+            value: 1
+          two:
+            summary: Retrieve Lesson id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lesson'
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: id not found
+      x-swagger-router-controller: LessonController
+    put:
+      tags:
+      - LessonController
+      summary: Update lesson
+      operationId: updateLesson
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update lesson id 1
+            value: 1
+          two:
+            summary: Update lesson id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Lesson'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Lesson PUT access
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "401":
+          description: id not found
+      x-swagger-router-controller: LessonController
+    delete:
+      tags:
+      - LessonController
+      summary: Delete lesson
+      operationId: deletedLesson
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Lesson id 1
+            value: 1
+          two:
+            summary: Delete Lesson id 2
+            value: 2
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: id not found
+      x-swagger-router-controller: LessonController
+components:
+  schemas:
+    Schedule:
+      title: Schedule
+      required:
+      - description
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        color:
+          type: string
+      additionalProperties: false
+      example:
+        color: color
+        name: name
+        description: description
+        id: 0
+    Lesson:
+      title: Lesson
+      required:
+      - date
+      - duration
+      - time
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        subject:
+          type: string
+        course:
+          type: string
+        year:
+          type: integer
+          format: int64
+        group:
+          type: string
+        room:
+          type: string
+        date:
+          type: string
+        time:
+          type: string
+        duration:
+          type: integer
+      example:
+        date: date
+        duration: duration
+        year: 6
+        subject: subject
+        course: course
+        id: 0
+        time: time
+        room: room
+        group: group
+  examples:
+    ScheduleExample01:
+      value:
+        id: 1
+        name: Schedule 01
+        description: My schedule for this year
+    ScheduleExample02:
+      value:
+        id: 2
+        name: Schedule 02
+        description: My schedule for this year
