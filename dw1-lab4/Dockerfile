@@ -1,7 +1,5 @@
-FROM node:18-alpine
-RUN apk add --no-cache python3 g++ make
+FROM node:latest
 WORKDIR /
+COPY package.json .
+RUN npm install
 COPY . .
-RUN yarn install --production
-CMD ["node", "index.js"]
-EXPOSE 3000
